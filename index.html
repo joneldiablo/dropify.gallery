@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+<link href="/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet">
+<script src="/bower_components/dropify/dist/js/dropify.min.js" type="text/javascript" charset="UTF-8"></script>
+
+<script type="text/javascript" src="/bower_components/imageResize/dist/imageResize.js"></script>
+<link href="dist/dropify.gallery.css" rel="stylesheet">
+<script type="text/javascript" src="dist/dropify.gallery.js" charset="UTF-8"></script>
+</head>
+<body>
+  <input type="file" class="dropify dropifyGal" data-default-file="dist/assets/imgs/img-up.png" id="dropifyGallery_1" data-allowed-file-extensions="png jpeg jpg" accept="image/png, image/jpeg" data-height="100"/>
+  <input type="file" class="dropify dropifyGal" data-default-file="dist/assets/imgs/img-up.png" id="dropifyGallery_2" data-allowed-file-extensions="png jpeg jpg" accept="image/png, image/jpeg" />
+  <input type="file" class="dropify" id="dropifyGallery_3" data-allowed-file-extensions="png jpeg jpg" accept="image/png, image/jpeg" />
+  <script type="text/javascript" charset="UTF-8">
+	$(document).ready(function(){
+		$(".dropifyGal").dropifyGallery({
+			imgs:[{
+				id : 20,
+				src : "demo/images/img-up.png",
+				sortValue : 5
+			}, {
+				id : 2,
+				src : "demo/images/img-up2.png",
+				sortValue : 4
+			}, {
+				id : 45,
+				src : "demo/images/img-up3.png",
+				sortValue : 3
+			}, {
+				id : 200,
+				src : "demo/images/img-up.png",
+				sortValue : 2
+			}, {
+				id : 23,
+				src : "demo/images/img-up2.png",
+				sortValue : 1
+			}, {
+				id : 1,
+				src : "demo/images/fondo.jpg",
+				sortValue : 0
+			}],
+			b64ImgSize:{
+  				width:700,
+  				height:700,
+				format:"jpg"
+  			}
+		});
+		$("#dropifyGallery_3").dropifyGallery({
+			gallery: false,
+  			b64ImgSize:{
+  				width:800,
+  				height:400,
+				format:"png"
+  			}
+		});
+		$(".dropify").each(function(){
+			$(this).on("imageAdded",function(){
+				console.log($(this).dropifyGallery("getImages"));
+			});
+		});
+		//oobtener unicamente las imagenes en base64
+		//$("#dropifyGallery_1").dropifyGallery("getImagesBase64");
+		//obtener todas las imagenes
+		//console.log($("#dropifyGallery_1").dropifyGallery("getImages"));
+	});
+	</script>
+</body>
+</html>

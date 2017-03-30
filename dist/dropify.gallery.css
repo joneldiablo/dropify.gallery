@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+.dropify-gallery .dropify-wrapper {
+  padding: 0;
+}
+
+.dropify-gallery .dropify-wrapper .dropify-preview {
+  padding: 0;
+}
+
+.dropify-gallery .thumbs ul.ui-sortable {
+  padding: 0;
+}
+
+.dropify-gallery li.thumb-wrap {
+  list-style-type: none;
+  margin: 5px;
+  background-color: aliceblue;
+  display: inline-block;
+}
+
+.dropify-gallery li.thumb-wrap img {
+  width: 0;
+  height: 0;
+  -moz-transition: all 400ms ease-in;
+  -webkit-transition: all 400ms ease-in;
+  -ms-transition: all 400ms ease-in;
+  -o-transition: all 400ms ease-in;
+  transition: all 400ms ease-in;
+}
+
+.dropify-gallery .dropify-filename-inner {
+  opacity: 0;
+}
+
+.dropify-gallery .dropify-wrapper.touch-fallback,
+.dropify-gallery .dropify-wrapper.touch-fallback .dropify-render {
+  height: 250px !important;
+}
+
+.dropify-gallery .dropify-wrapper.touch-fallback .dropify-render img {
+  top: 0px;
+  max-height: 100% !important;
+}
+
+.dropify-gallery .dropify-wrapper.touch-fallback .dropify-message {
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+}
+
+.dropify-gallery .dropify-wrapper.touch-fallback button.dropify-clear {
+  background-color: rgba(240, 248, 255, 0.85);
+}
+
+.dropify-gallery .dropify-wrapper.touch-fallback .dropify-preview .dropify-infos {
+  position: absolute;
+  bottom: 12px;
+  top: initial;
+  left: 12px;
+}

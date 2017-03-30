@@ -1,0 +1,30 @@
+{
+  "name": "dropify.gallery",
+  "description": "jquery plugin for create a gallery based on dropify plugin",
+  "main": "dropify.gallery",
+  "keywords": [
+    "gallery",
+    "dropify",
+    "base64"
+  ],
+  "authors": [
+    "jon_eldiablo@hotmail.com"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo"
+  ],
+  "dependencies": {
+    "jquery": "2.2.4",
+    "dropify": "^0.2.1",
+    "jquery-ui": "^1.12.1",
+    "imageResize": "C:\\redhat\\plugins\\imageResize",
+    "jquery-ui-touch-punch": "*"
+  }
+}
