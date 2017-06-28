@@ -24,7 +24,7 @@
     "jquery": "2.2.4",
     "dropify": "^0.2.1",
     "jquery-ui": "^1.12.1",
-    "imageResize": "C:\\redhat\\plugins\\imageResize",
-    "jquery-ui-touch-punch": "*"
+    "jquery-ui-touch-punch": "*",
+    "imageResize": "https://github.com/joneldiablo/imageResize.git"
   }
 }

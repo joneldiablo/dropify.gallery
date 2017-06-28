@@ -8,6 +8,7 @@
 		// Access to jQuery and DOM versions of element
 		base.$el = $(el);
 		base.el = el;
+		base.dataToDelete = [];
 
 		// Add a reverse reference to the DOM object
 		base.$el.data("dropifyGallery", base);
@@ -60,7 +61,13 @@
 					sortable.find("li:first").click();
 				});
 			}).on('dropify.beforeClear', function (event, element) {
-				element.preview.find("img").data("element").remove();
+				var obj = element.preview.find("img").data("element");
+				var path = obj.find("img").data("src");
+				base.dataToDelete.push({
+					path: path,
+					name: path.split("/").pop()
+				});
+				obj.remove();
 			}).on('dropify.afterClear', function (event, element) {
 				if (sortable.find("li:first").length > 0) {
 					sortable.find("li:first").click();
@@ -95,7 +102,8 @@
 		};
 
 		base.getData = function (filter) {
-			var data = [];
+			var remain = [];
+			var news = [];
 			base.$el.closest(".drop-area").find(".thumbs img").each(function (i, elem) {
 				if ((filter && $(elem).data(filter)) || !filter) {
 					var row = {};
@@ -103,11 +111,14 @@
 					row.sortValue = $(elem).data("sortValue");
 					row.src = $(elem).data("src");
 					row.id = $(elem).data("id");
-					data.push(row);
+					if (row.base64) {
+						news.push(row);
+					} else {
+						remain.push(row);
+					}
 				}
-
 			});
-			return data;
+			return { remain: remain, added: news, deleted: base.dataToDelete };
 		};
 
 		function imgClick(event) {
