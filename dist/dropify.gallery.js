@@ -63,11 +63,13 @@
 			}).on('dropify.beforeClear', function (event, element) {
 				var obj = element.preview.find("img").data("element");
 				var path = obj.find("img").data("src");
-				base.dataToDelete.push({
+				var del = {
 					path: path,
 					name: path.split("/").pop()
-				});
+				};
+				base.dataToDelete.push(del);
 				obj.remove();
+				base.$el.trigger("imageDeleted", del);
 			}).on('dropify.afterClear', function (event, element) {
 				if (sortable.find("li:first").length > 0) {
 					sortable.find("li:first").click();
@@ -118,7 +120,11 @@
 					}
 				}
 			});
-			return { remain: remain, added: news, deleted: base.dataToDelete };
+			return {
+				remain: remain,
+				added: news,
+				deleted: base.dataToDelete
+			};
 		};
 
 		function imgClick(event) {
@@ -170,7 +176,7 @@
 			});
 			li.on('click', imgClick);
 			setTimeout(function () {
-				base.$el.trigger("imageAdded");
+				base.$el.trigger("imageAdded", elem);
 			}, 200);
 		}
 

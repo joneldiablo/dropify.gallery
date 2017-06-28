@@ -65,9 +65,11 @@
 				}
 			});
 			$(".dropify").each(function () {
-				$(this).on("imageAdded", function () {
-					console.log($(this).dropifyGallery("getImages"));
-					console.log($(this).dropifyGallery("getImagesBase64"));
+				$(this).on("imageAdded", function (e, image) {
+					console.log(image);
+				});
+				$(this).on("imageDeleted", function (e, image) {
+					console.log(image);
 				});
 			});
 			//oobtener unicamente las imagenes en base64
