@@ -74,15 +74,15 @@
 					base.dataToDelete.push(del);
 				}
 				obj.remove();
+				if (base.options.gallery) {
+					sortable.sortable("refresh");
+				}
 				base.$el.trigger("imageDeleted", del);
 			}).on('dropify.afterClear', function (event, element) {
 				if (sortable.find("li:first").length > 0) {
 					sortable.find("li:first").click();
 					base.$el.parent().addClass("has-preview");
 					base.$el.parent().find(".dropify-preview").show();
-				}
-				if (base.options.gallery) {
-					sortable.sortable("refresh");
 				}
 			});
 			if (base.options.imgs) {
@@ -111,6 +111,7 @@
 		base.getData = function (filter) {
 			var remain = [];
 			var news = [];
+			base.sortable.sortable('refresh');
 			base.$el.closest(".drop-area").find(".thumbs img").each(function (i, elem) {
 				if ((filter && $(elem).data(filter)) || !filter) {
 					var row = {};
