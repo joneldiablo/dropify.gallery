@@ -66,7 +66,8 @@
 				var del = {
 					src: path,
 					name: path.split("/").pop(),
-					sortValue: -1
+					sortValue: -1,
+					delete: true
 				};
 				base.dataToDelete.push(del);
 				obj.remove();
