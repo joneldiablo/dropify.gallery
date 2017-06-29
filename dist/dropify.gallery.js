@@ -111,7 +111,11 @@
 		base.getData = function (filter) {
 			var remain = [];
 			var news = [];
-			base.sortable.sortable('refresh');
+			if (base.options.gallery) {
+				sortValueFunc(null, {
+					item: base.sortable.children().last()
+				});
+			}
 			base.$el.closest(".drop-area").find(".thumbs img").each(function (i, elem) {
 				if ((filter && $(elem).data(filter)) || !filter) {
 					var row = {};
