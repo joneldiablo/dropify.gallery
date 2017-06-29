@@ -62,14 +62,17 @@
 				});
 			}).on('dropify.beforeClear', function (event, element) {
 				var obj = element.preview.find("img").data("element");
-				var path = obj.find("img").data("src");
+				var src = obj.find("img").data("src");
+				var base64 = obj.find("img").data("base64");
 				var del = {
-					src: path,
-					name: path.split("/").pop(),
+					src: src,
+					name: src.split("/").pop(),
 					sortValue: -1,
 					delete: true
 				};
-				base.dataToDelete.push(del);
+				if (!base64) {
+					base.dataToDelete.push(del);
+				}
 				obj.remove();
 				base.$el.trigger("imageDeleted", del);
 			}).on('dropify.afterClear', function (event, element) {
