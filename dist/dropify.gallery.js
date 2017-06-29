@@ -64,8 +64,9 @@
 				var obj = element.preview.find("img").data("element");
 				var path = obj.find("img").data("src");
 				var del = {
-					path: path,
-					name: path.split("/").pop()
+					src: path,
+					name: path.split("/").pop(),
+					sortValue: -1
 				};
 				base.dataToDelete.push(del);
 				obj.remove();
@@ -120,11 +121,7 @@
 					}
 				}
 			});
-			return {
-				remain: remain,
-				added: news,
-				deleted: base.dataToDelete
-			};
+			return remain.concat(news).concat(base.dataToDelete);
 		};
 
 		function imgClick(event) {
