@@ -29,9 +29,11 @@
                     (!base.options.gallery ? "thumbs-off " : "") +
                     base.options.thumbnails["class"],
                 css: $.extend({},
-                    base.options.thumbnails.css, !base.options.gallery ? {
+                    base.options.thumbnails.css, !base.options.gallery ?
+                    {
                         display: "none"
-                    } : {}
+                    } :
+                    {}
                 )
             });
             var sortable = $("<ul></ul>");
