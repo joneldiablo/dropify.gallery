@@ -73,7 +73,7 @@
                                 var base64 = obj.data("base64");
                                 var del = {
                                     src: objSrc,
-                                    base64: base64,
+                                    base64: !!base64,
                                     name: objSrc.split("/").pop(),
                                     sortValue: -1,
                                     delete: true
@@ -94,7 +94,7 @@
                     var base64 = obj.find("img").data("base64");
                     var del = {
                         src: src,
-                        base64: base64,
+                        base64: !!base64,
                         name: src.split("/").pop(),
                         sortValue: -1,
                         delete: true
