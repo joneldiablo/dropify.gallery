@@ -71,15 +71,17 @@
                                 var obj = $toDelete.find("img");
                                 var objSrc = obj.data("src");
                                 var base64 = obj.data("base64");
+                                var del = {
+                                    src: objSrc,
+                                    base64: base64,
+                                    name: objSrc.split("/").pop(),
+                                    sortValue: -1,
+                                    delete: true
+                                };
                                 if (!base64) {
-                                    var del = {
-                                        src: objSrc,
-                                        name: objSrc.split("/").pop(),
-                                        sortValue: -1,
-                                        delete: true
-                                    };
-                                    base.$el.trigger("imageDeleted", del);
+                                    base.dataToDelete.push(del);
                                 }
+                                base.$el.trigger("imageDeleted", del);
                             }
                             $toDelete.remove();
                         }
@@ -92,6 +94,7 @@
                     var base64 = obj.find("img").data("base64");
                     var del = {
                         src: src,
+                        base64: base64,
                         name: src.split("/").pop(),
                         sortValue: -1,
                         delete: true
