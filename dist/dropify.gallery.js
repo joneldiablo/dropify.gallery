@@ -80,9 +80,7 @@
                                     sortValue: -1,
                                     delete: true
                                 };
-                                if (!base64) {
-                                    base.dataToDelete.push(del);
-                                }
+                                base.dataToDelete.push(del);
                                 base.$el.trigger("imageDeleted", del);
                             }
                             $toDelete.remove();
@@ -102,9 +100,7 @@
                             sortValue: -1,
                             delete: true
                         };
-                        if (!base64) {
-                            base.dataToDelete.push(del);
-                        }
+                        base.dataToDelete.push(del);
                         obj.remove();
                         if (base.options.gallery) {
                             sortable.sortable("refresh");
@@ -143,17 +139,17 @@
         };
         base.setImage = createThumb;
         base.getData = function(filter) {
-        	if(filter == "delete"){
-          	return base.dataToDelete;
-          }
+            if (filter == "delete") {
+                return base.dataToDelete;
+            }
             var remain = [];
             var news = [];
             if (base.options.gallery) {
                 sortValueFunc(null, {
                     /*
-										 * se toma el último elemento para re-utilizar la función
-										 * que recibe un elemento y busca al padre
-										 */
+                     * se toma el último elemento para re-utilizar la función
+                     * que recibe un elemento y busca al padre
+                     */
                     item: base.sortable.children().last()
                 });
             }
@@ -177,11 +173,11 @@
             if (!filter) {
                 return remain.concat(news);
             }
-            if(filter == "base64"){
-            	return news;
+            if (filter == "base64") {
+                return news;
             }
-            if(filter == "src"){
-            	return remain;
+            if (filter == "src") {
+                return remain;
             }
         };
 
@@ -308,7 +304,7 @@
             case "getImagesBase64":
                 return base.getData("base64");
             case "getImagesSrc":
-              return base.getData("src");
+                return base.getData("src");
             case "getImagesDeleted":
                 return base.getData("delete");
             case "setImage":
