@@ -158,6 +158,8 @@
                 .closest(".drop-area")
                 .find(".thumbs img")
                 .each(function(i, elem) {
+                    console.log(filter, $(elem).data(filter));
+                    console.log(filter && $(elem).data(filter), !filter);
                     if ((filter && $(elem).data(filter)) || !filter) {
                         var row = {};
                         row.base64 = $(elem).data("base64");
@@ -171,7 +173,10 @@
                         }
                     }
                 });
-            return remain.concat(news).concat(base.dataToDelete);
+            if (!filter || filter == "delete") {
+                remain.concat(base.dataToDelete);
+            }
+            return remain.concat(news);
         };
 
         function imgClick(event) {
@@ -299,7 +304,7 @@
             case "getImagesDeleted":
                 return base.getData("delete");
             case "setImage":
-                return base.createThumb(0, img);
+                return base.setImage(0, img);
             default:
                 return this.each(function() {
                     if (!base) new $.dropifyGallery(this, options);
