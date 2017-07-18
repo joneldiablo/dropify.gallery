@@ -141,7 +141,7 @@
                 });
             }
         };
-
+        base.setImage = createThumb;
         base.getData = function(filter) {
             var remain = [];
             var news = [];
@@ -289,7 +289,7 @@
         }
     };
 
-    $.fn.dropifyGallery = function(options) {
+    $.fn.dropifyGallery = function(options, img) {
         var base = $(this).data("dropifyGallery");
         switch (options) {
             case "getImages":
@@ -298,6 +298,8 @@
                 return base.getData("base64");
             case "getImagesDeleted":
                 return base.getData("delete");
+            case "setImage":
+                return base.createThumb(0, img);
             default:
                 return this.each(function() {
                     if (!base) new $.dropifyGallery(this, options);
