@@ -147,6 +147,10 @@
             var news = [];
             if (base.options.gallery) {
                 sortValueFunc(null, {
+                    /*
+                     * se toma el último elemento para re-utilizar
+                     * la función que recibe un elemento y busca al padre
+                     */
                     item: base.sortable.children().last()
                 });
             }
@@ -292,6 +296,8 @@
                 return base.getData();
             case "getImagesBase64":
                 return base.getData("base64");
+            case "getImagesDeleted":
+                return base.getData("delete");
             default:
                 return this.each(function() {
                     if (!base) new $.dropifyGallery(this, options);
