@@ -143,14 +143,17 @@
         };
         base.setImage = createThumb;
         base.getData = function(filter) {
+        	if(filter == "delete"){
+          	return base.dataToDelete;
+          }
             var remain = [];
             var news = [];
             if (base.options.gallery) {
                 sortValueFunc(null, {
                     /*
-                     * se toma el último elemento para re-utilizar
-                     * la función que recibe un elemento y busca al padre
-                     */
+										 * se toma el último elemento para re-utilizar la función
+										 * que recibe un elemento y busca al padre
+										 */
                     item: base.sortable.children().last()
                 });
             }
@@ -158,8 +161,6 @@
                 .closest(".drop-area")
                 .find(".thumbs img")
                 .each(function(i, elem) {
-                    console.log(filter, $(elem).data(filter));
-                    console.log(filter && $(elem).data(filter), !filter);
                     if ((filter && $(elem).data(filter)) || !filter) {
                         var row = {};
                         row.base64 = $(elem).data("base64");
@@ -173,10 +174,15 @@
                         }
                     }
                 });
-            if (!filter || filter == "delete") {
-                remain.concat(base.dataToDelete);
+            if (!filter) {
+                return remain.concat(news);
             }
-            return remain.concat(news);
+            if(filter == "base64"){
+            	return news;
+            }
+            if(filter == "src"){
+            	return remain;
+            }
         };
 
         function imgClick(event) {
@@ -301,6 +307,8 @@
                 return base.getData();
             case "getImagesBase64":
                 return base.getData("base64");
+            case "getImagesSrc":
+              return base.getData("src");
             case "getImagesDeleted":
                 return base.getData("delete");
             case "setImage":
